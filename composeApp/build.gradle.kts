@@ -62,7 +62,7 @@ kotlin {
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
-            implementation("io.ktor:ktor-client-websockets:3.4.2")
+            implementation(libs.ktor.client.websockets)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -73,7 +73,7 @@ kotlin {
             implementation(libs.ktor.client.cio) // Ktor 引擎
         }
         webMain.dependencies {
-            api(libs.ktor.client.js) // Ktor 引擎
+            implementation(libs.ktor.client.js) // Ktor 引擎
         }
     }
 }
@@ -106,7 +106,7 @@ android {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-client-jetty:3.4.2")
+    //implementation(libs.ktor.client.jetty)
     debugImplementation(libs.compose.uiTooling)
 }
 

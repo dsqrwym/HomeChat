@@ -1,0 +1,16 @@
+version:0
+string|chat_status_offline|T2ZmbGluZQ==
+string|chat_status_online|T25saW5l
+string|chat_topbar_current_user|Q3VycmVudCB1c2VyOiAlMSRz
+string|chat_topbar_input_username_first|UGxlYXNlIGVudGVyIGEgdXNlcm5hbWUgZmlyc3Q=
+string|chat_topbar_title|SG9tZUNoYXQgTGl2ZSBDaGF0IFJvb20=
+string|connection_join|Sm9pbg==
+string|connection_username_label|VXNlcm5hbWU=
+string|connection_username_placeholder|ZS5nLiBBbGljZQ==
+string|message_input_label|TWVzc2FnZQ==
+string|message_input_placeholder_disabled|Q29ubmVjdCB0byBzZW5kIG1lc3NhZ2Vz
+string|message_input_placeholder_enabled|U2F5IHNvbWV0aGluZy4uLg==
+string|message_list_empty_hint|Q29ubmVjdGVkIHRvIGNoYXQgcm9vbS4gU2VuZCB5b3VyIGZpcnN0IG1lc3NhZ2V+
+string|message_me|TWU=
+string|message_send|U2VuZA==
+string|message_system|U3lzdGVt

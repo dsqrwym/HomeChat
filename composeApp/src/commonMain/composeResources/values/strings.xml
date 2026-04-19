@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chat_topbar_title">HomeChat Live Chat Room</string>
+    <string name="chat_topbar_input_username_first">Please enter a username first</string>
+    <string name="chat_topbar_current_user">Current user: %1$s</string>
+    <string name="chat_status_online">Online</string>
+    <string name="chat_status_offline">Offline</string>
+
+    <string name="connection_username_label">Username</string>
+    <string name="connection_username_placeholder">e.g. Alice</string>
+    <string name="connection_join">Join</string>
+
+    <string name="message_input_label">Message</string>
+    <string name="message_input_placeholder_enabled">Say something...</string>
+    <string name="message_input_placeholder_disabled">Connect to send messages</string>
+    <string name="message_send">Send</string>
+
+    <string name="message_list_empty_hint">Connected to chat room. Send your first message~</string>
+    <string name="message_me">Me</string>
+    <string name="message_system">System</string>
+</resources>

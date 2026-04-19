@@ -1,4 +1,4 @@
-package org.dsqrwym.theme
+package org.dsqrwym.homechat.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

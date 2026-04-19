@@ -1,10 +1,7 @@
-package org.dsqrwym.homechat.components
+package org.dsqrwym.homechat.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.FilledTonalButton
@@ -13,8 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.autofill.ContentType
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.semantics.contentType
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -32,20 +32,20 @@ fun ConnectionBar(
     onConnect: () -> Unit,
 ) {
     val focusManager = LocalFocusManager.current
-    Spacer(Modifier.height(10.dp))
     Row(
-        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         OutlinedTextField(
+            modifier = Modifier.semantics {
+                contentType = ContentType.Username
+            },
             value = username,
             onValueChange = onUsernameChange,
             label = { Text(stringResource(Res.string.connection_username_label)) },
             placeholder = { Text(stringResource(Res.string.connection_username_placeholder)) },
             singleLine = true,
             enabled = !isConnected,
-            modifier = Modifier.weight(1f),
             keyboardActions = KeyboardActions(onAny = {
                 onConnect()
                 focusManager.moveFocus(FocusDirection.Down)

@@ -1,4 +1,4 @@
-package org.dsqrwym.homechat.components
+package org.dsqrwym.homechat.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

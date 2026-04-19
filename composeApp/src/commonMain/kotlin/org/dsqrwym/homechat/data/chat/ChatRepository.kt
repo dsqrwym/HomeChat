@@ -10,6 +10,7 @@ class ChatRepository(
 ) {
     val messages: Flow<ChatMessage> = chatApi.messages
     val session: Flow<ChatSession> = chatApi.session
+    val onlineCount: StateFlow<Int> = chatApi.onlineCount
     val isConnected: StateFlow<Boolean> = chatApi.isConnected
 
     private val pendingMessages = mutableListOf<String>()

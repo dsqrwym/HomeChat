@@ -1,30 +1,13 @@
 package org.dsqrwym.homechat.data.chat
 
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.websocket.DefaultClientWebSocketSession
-import io.ktor.client.plugins.websocket.webSocketSession
-import io.ktor.http.URLProtocol
-import io.ktor.http.path
-import io.ktor.websocket.Frame
-import io.ktor.websocket.close
-import io.ktor.websocket.readText
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import io.ktor.client.*
+import io.ktor.client.plugins.websocket.*
+import io.ktor.http.*
+import io.ktor.websocket.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 import kotlinx.serialization.json.Json
-import org.dsqrwym.homechat.model.ChatMessage
-import org.dsqrwym.homechat.model.ChatSession
-import org.dsqrwym.homechat.model.ChatSocketEvent
-import org.dsqrwym.homechat.model.SendChatMessageRequest
-import org.dsqrwym.homechat.model.SYSTEM_USER_ID
-import org.dsqrwym.homechat.model.SYSTEM_USERNAME
+import org.dsqrwym.homechat.model.*
 import org.dsqrwym.homechat.network.ApiConfig
 import kotlin.time.Clock
 
@@ -40,6 +23,9 @@ class ChatApi(
 
     private val _session = MutableSharedFlow<ChatSession>(extraBufferCapacity = 1)
     val session: Flow<ChatSession> = _session.asSharedFlow()
+
+    private val _onlineCount = MutableStateFlow(0)
+    val onlineCount: StateFlow<Int> = _onlineCount.asStateFlow()
 
     private val _isConnected = MutableStateFlow(false)
     val isConnected = _isConnected.asStateFlow()
@@ -94,6 +80,7 @@ class ChatApi(
                                 _isConnected.value = true
                                 _session.emit(event.session)
                             }
+                            is ChatSocketEvent.OnlineCountUpdated -> _onlineCount.value = event.count
                         }
                     }
                 }

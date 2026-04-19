@@ -1,14 +1,10 @@
 package org.dsqrwym.homechat.services
 
-import io.ktor.server.websocket.DefaultWebSocketServerSession
-import io.ktor.websocket.Frame
+import io.ktor.server.websocket.*
+import io.ktor.websocket.*
 import kotlinx.serialization.json.Json
-import org.dsqrwym.homechat.model.ChatMessage
-import org.dsqrwym.homechat.model.ChatSession
-import org.dsqrwym.homechat.model.ChatSocketEvent
-import org.dsqrwym.homechat.model.SYSTEM_USER_ID
-import org.dsqrwym.homechat.model.SYSTEM_USERNAME
-import java.util.UUID
+import org.dsqrwym.homechat.model.*
+import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -113,6 +109,7 @@ class ChatService {
                 text = "${connection.username} joined the chat",
             ),
         )
+        broadcastOnlineCount()
         return chatSession
     }
 
@@ -128,6 +125,7 @@ class ChatService {
                     text = "${removed.username} left the chat",
                 ),
             )
+            broadcastOnlineCount()
         }
     }
 
@@ -152,6 +150,17 @@ class ChatService {
                     onlineUsers.decrementAndGet()
                 }
             }
+        }
+    }
+
+    private suspend fun broadcastOnlineCount() {
+        val payload = json.encodeToString(
+            ChatSocketEvent.serializer(),
+            ChatSocketEvent.OnlineCountUpdated(onlineUsers.get()),
+        )
+        connections.values.forEach { connection ->
+            try { connection.session.send(Frame.Text(payload)) }
+            catch (_: Exception) { }
         }
     }
 

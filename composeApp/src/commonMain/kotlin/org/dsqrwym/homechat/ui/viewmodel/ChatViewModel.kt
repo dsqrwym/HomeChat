@@ -9,8 +9,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.dsqrwym.homechat.data.chat.ChatRepository
 import org.dsqrwym.homechat.model.ChatMessage
-import org.dsqrwym.homechat.model.SYSTEM_USER_ID
 import org.dsqrwym.homechat.model.SYSTEM_USERNAME
+import org.dsqrwym.homechat.model.SYSTEM_USER_ID
 import kotlin.time.Clock
 
 class ChatViewModel(
@@ -18,7 +18,7 @@ class ChatViewModel(
 ) : ViewModel() {
     var uiState by mutableStateOf(ChatUiState())
         private set
-
+    val onlineCount = repository.onlineCount
     private var connectJob: Job? = null
 
     init {

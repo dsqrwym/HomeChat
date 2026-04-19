@@ -15,6 +15,7 @@ junit = "4.13.2"
 koinCore = "4.2.1" #4.2.0
 kotlin = "2.3.20"
 kotlinx-coroutines = "1.10.2"
+kotlinxDatetime = "0.7.1"
 ktor = "3.4.2"
 logback = "1.5.32"
 material3 = "1.10.0-alpha05"
@@ -41,6 +42,7 @@ compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMul
 compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
 compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
 kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 ktor-client-jetty = { module = "io.ktor:ktor-client-jetty", version.ref = "ktor" }
 ktor-client-websockets = { module = "io.ktor:ktor-client-websockets", version.ref = "ktor" }
 ktor-server-websockets = { module = "io.ktor:ktor-server-websockets", version.ref = "ktor" }

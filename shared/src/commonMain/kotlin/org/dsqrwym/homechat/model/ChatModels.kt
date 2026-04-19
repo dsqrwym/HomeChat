@@ -39,4 +39,8 @@ sealed class ChatSocketEvent {
     data class MessageReceived(
         val message: ChatMessage,
     ) : ChatSocketEvent()
+
+    @Serializable
+    @SerialName("online_count")
+    data class OnlineCountUpdated(val count: Int) : ChatSocketEvent()
 }

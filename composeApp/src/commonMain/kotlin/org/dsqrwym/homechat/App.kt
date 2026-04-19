@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import org.dsqrwym.homechat.di.appModule
 import org.dsqrwym.homechat.ui.screen.ChatScreen
-import org.dsqrwym.theme.MyMaterialTheme
-import org.dsqrwym.theme.miSansNormalTypography
+import org.dsqrwym.homechat.theme.MyMaterialTheme
+import org.dsqrwym.homechat.theme.miSansNormalTypography
 import org.koin.compose.KoinApplication
 import org.koin.dsl.koinConfiguration
 

@@ -1,4 +1,4 @@
-package org.dsqrwym.theme
+package org.dsqrwym.homechat.theme
 
 import androidx.compose.ui.graphics.Color
 
